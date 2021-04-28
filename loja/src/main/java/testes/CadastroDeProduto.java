@@ -5,16 +5,15 @@ import java.math.BigDecimal;
 import javax.persistence.EntityManager;
 
 import dao.ProdutoDAO;
+import modelo.Categoria;
 import modelo.Produto;
 import util.JPAUtil;
 
 public class CadastroDeProduto {
 
 	public static void main(String[] args) {
-		Produto celular = new Produto();
-		celular.setNome("Xiaomi Redmi");
-		celular.setDescricao("Muito legal");
-		celular.setPreco(new BigDecimal("800"));
+		Produto celular = new Produto("Xiaomi Redmi", "Muito legal", new BigDecimal("800"), Categoria.CELULARES);
+		
 
 //		// Acessa o banco de dados atraves interface EntityManager que vai fazer a
 //		// ponte em transformar a entidade produto em uma linha na tabela no banco de dados;
