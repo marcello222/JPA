@@ -12,9 +12,21 @@ public class CategoriaDAO {
 		this.em = em;
 	}
 
-	public void cadastrar(Categoria celulares) {
-		this.em.persist(celulares);
+	public void cadastrar(Categoria categoria) {
+		this.em.persist(categoria);
 
 	}
 
+	// Esse metodo é para garantir que a categoria estara no estado merge
+	public void atualizar(Categoria categoria) {
+		this.em.merge(categoria);
+
+	}
+
+	public void remove(Categoria categoria) {
+		// Esse metodo é para garantir que a categoria estara no estado MENAGED
+		categoria = em.merge(categoria);
+		this.em.remove(categoria);
+
+	}
 }
