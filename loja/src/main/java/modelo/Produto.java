@@ -4,11 +4,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,12 +22,15 @@ public class Produto {
 	private String descricao;
 	private BigDecimal preco;
 	private LocalDate dataCadastro = LocalDate.now();
-	
-	
-	//Cadastra os produtos da classe Enum como VARCHAR e não tera problema de ordem, CELULARES, INFORMATIC, LIVROS e etc.
-	@Enumerated(EnumType.STRING)
+
+//	//Cadastra os produtos da classe Enum como VARCHAR e não tera problema de ordem, CELULARES, INFORMATIC, LIVROS e etc.
+//	@Enumerated(EnumType.STRING)
+
+	// Quando temos um atributo do tipo outra classe Entity (Categoria),
+	// temos que mostrar a Cardinalidade entre produtos e categoria com a anotação ManyToOne
+	@ManyToOne
 	private Categoria categoria;
-	
+
 	public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
 		super();
 		this.nome = nome;
@@ -37,9 +39,6 @@ public class Produto {
 		this.categoria = categoria;
 	}
 
-	
-	
-	
 	public Long getId() {
 		return id;
 	}
