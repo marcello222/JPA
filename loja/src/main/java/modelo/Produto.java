@@ -27,9 +27,14 @@ public class Produto {
 //	@Enumerated(EnumType.STRING)
 
 	// Quando temos um atributo do tipo outra classe Entity (Categoria),
-	// temos que mostrar a Cardinalidade entre produtos e categoria com a anotação ManyToOne
+	// temos que mostrar a Cardinalidade entre produtos e categoria com a anotação
+	// ManyToOne
 	@ManyToOne
 	private Categoria categoria;
+
+	//exigencia da JPA COLOCAR O CONSTRUTOR DEFAULT NA JPA
+	public Produto() {
+	}
 
 	public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
 		super();

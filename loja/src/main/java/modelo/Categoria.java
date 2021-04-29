@@ -10,6 +10,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "categorias")
 public class Categoria {
+	
+	//exigencia da JPA COLOCAR O CONSTRUTOR DEFAULT NA JPA
+	public Categoria() {
+	}
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
